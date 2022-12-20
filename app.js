@@ -57,20 +57,6 @@ class Request {
     };
     this.xhr.send(JSON.stringify(data));
   }
-  // PUT Request
-  put(url, data, callback) {
-    this.xhr.open("PUT", url); // Bağlantı açık
-    this.xhr.setRequestHeader("Content-type", "application/json"); //JSON Verisi
-    this.xhr.onload = () => {
-      if (this.xhr.status === 200) {
-        // Başarılı
-        callback(null, this.xhr.responseText);
-      } else {
-        callback("Put Request: Bir hata oluştu", null);
-      }
-    };
-    this.xhr.send(JSON.stringify(data));
-  }
 }
 const request = new Request();
 
@@ -100,22 +86,9 @@ const request = new Request();
 //   }
 // );
 
-// request.post(
-//   "https://jsonplaceholder.typicode.com/albums",
-//   { userId: 2, title: "Kelebeğin Rüyası" },
-//   function (err, album) {
-//     if (err === null) {
-//       console.log(album);
-//     } else {
-//       // Hata
-//       console.log(err);
-//     }
-//   }
-// );
-
-request.put(
-  "https://jsonplaceholder.typicode.com/albums/40",
-  { userId: 20, title: "Organize İşler" },
+request.post(
+  "https://jsonplaceholder.typicode.com/albums",
+  { userId: 2, title: "Kelebeğin Rüyası" },
   function (err, album) {
     if (err === null) {
       console.log(album);
