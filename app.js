@@ -43,6 +43,20 @@ class Request {
 
     this.xhr.send(); //istek gönder
   }
+  // POST Request
+  post(url, data, callback) {
+    this.xhr.open("POST", url); // Bağlantı açık
+    this.xhr.setRequestHeader("Content-type", "application/json"); //JSON Verisi
+    this.xhr.onload = () => {
+      if (this.xhr.status === 201) {
+        // Başarılı
+        callback(null, this.xhr.responseText);
+      } else {
+        callback("Post Request: Bir hata oluştu", null);
+      }
+    };
+    this.xhr.send(JSON.stringify(data));
+  }
 }
 const request = new Request();
 
@@ -59,12 +73,25 @@ const request = new Request();
 //   }
 // );
 
-request.get(
-  "https://jsonplaceholder.typicode.com/albums/50",
-  function (err, response) {
-    if (err == null) {
-      // Başarılı
-      console.log(response);
+// request.get(
+//   "https://jsonplaceholder.typicode.com/albums/50",
+//   function (err, response) {
+//     if (err == null) {
+//       // Başarılı
+//       console.log(response);
+//     } else {
+//       // Hata
+//       console.log(err);
+//     }
+//   }
+// );
+
+request.post(
+  "https://jsonplaceholder.typicode.com/albums",
+  { userId: 2, title: "Kelebeğin Rüyası" },
+  function (err, album) {
+    if (err === null) {
+      console.log(album);
     } else {
       // Hata
       console.log(err);
