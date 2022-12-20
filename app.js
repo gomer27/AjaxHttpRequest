@@ -86,15 +86,15 @@ const request = new Request();
 //   }
 // );
 
-request.post(
-  "https://jsonplaceholder.typicode.com/albums",
-  { userId: 2, title: "Kelebeğin Rüyası" },
-  function (err, album) {
-    if (err === null) {
-      console.log(album);
-    } else {
-      // Hata
-      console.log(err);
-    }
-  }
-);
+// request.post(
+//   "https://jsonplaceholder.typicode.com/albums",
+//   { userId: 2, title: "Kelebeğin Rüyası" },
+//   function (err, album) {
+//     if (err === null) {
+//       console.log(album);
+//     } else {
+//       // Hata
+//       console.log(err);
+//     }
+//   }
+// );
